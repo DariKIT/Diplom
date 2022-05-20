@@ -36,7 +36,7 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+
                     </Grid.RowDefinitions>
 
                     <TextBox materialDesign:HintAssist.Hint="Марка машины" Width="300"
@@ -61,7 +61,7 @@
                     </TextBox>
 
                  
-                    <Button Grid.Row="4" Grid.ColumnSpan="2" Width="150" Height="45" VerticalAlignment="Center" Content="Сохранить" x:Name="SaveCarBtn" Click="SaveCarBtn_Click"></Button>
+                    <Button Grid.Row="3" Grid.ColumnSpan="2" Width="150" Height="45" VerticalAlignment="Center" Content="Сохранить" x:Name="SaveCarBtn" Click="SaveCarBtn_Click"></Button>
                 </Grid>
             </Border>
         </Grid>

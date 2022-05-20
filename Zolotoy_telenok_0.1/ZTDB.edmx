@@ -4,54 +4,54 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище ZTDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="Хранилище ZTDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
         <EntityType Name="Запись">
           <Key>
             <PropertyRef Name="ИД_Записи" />
           </Key>
-          <Property Name="ИД_Записи" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ИД_Машины" Type="int" Nullable="false" />
-          <Property Name="ИД_Работнка" Type="int" Nullable="false" />
-          <Property Name="ИД_Услуги" Type="int" Nullable="false" />
+          <Property Name="ИД_Записи" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="ИД_Машины" Nullable="false" Type="int" />
+          <Property Name="ИД_Работнка" Nullable="false" Type="int" />
+          <Property Name="ИД_Услуги" Nullable="false" Type="int" />
         </EntityType>
         <EntityType Name="Клиент">
           <Key>
             <PropertyRef Name="ИД_Клиента" />
           </Key>
-          <Property Name="ИД_Клиента" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Номер_авто" Type="nchar" MaxLength="6" />
+          <Property Name="ИД_Клиента" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Номер_авто" MaxLength="6" Type="nchar" />
         </EntityType>
         <EntityType Name="Машина">
           <Key>
             <PropertyRef Name="ИД_Машины" />
           </Key>
-          <Property Name="ИД_Машины" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Марка" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Модель" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Класс" Type="int" Nullable="false" />
+          <Property Name="ИД_Машины" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Марка" Nullable="false" MaxLength="50" Type="nvarchar" />
+          <Property Name="Модель" Nullable="false" MaxLength="50" Type="nvarchar" />
+          <Property Name="Класс" Nullable="false" Type="int" />
         </EntityType>
         <EntityType Name="Работник">
           <Key>
             <PropertyRef Name="ИД_Работника" />
           </Key>
-          <Property Name="ИД_Работника" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Фамилия" Type="nchar" MaxLength="15" Nullable="false" />
-          <Property Name="Имя" Type="nchar" MaxLength="15" Nullable="false" />
-          <Property Name="Отчество" Type="nchar" MaxLength="15" Nullable="false" />
-          <Property Name="Телефон" Type="nchar" MaxLength="12" Nullable="false" />
+          <Property Name="ИД_Работника" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Фамилия" Nullable="false" MaxLength="15" Type="nchar" />
+          <Property Name="Имя" Nullable="false" MaxLength="15" Type="nchar" />
+          <Property Name="Отчество" Nullable="false" MaxLength="15" Type="nchar" />
+          <Property Name="Телефон" Nullable="false" MaxLength="12" Type="nchar" />
         </EntityType>
         <EntityType Name="Услуги">
           <Key>
             <PropertyRef Name="ИД_Услуги" />
           </Key>
-          <Property Name="ИД_Услуги" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Наименование" Type="nchar" MaxLength="20" Nullable="false" />
-          <Property Name="Описание" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Цена" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ИД_Услуги" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Наименование" Nullable="false" MaxLength="20" Type="nchar" />
+          <Property Name="Описание" Nullable="false" Type="nvarchar(max)" />
+          <Property Name="Цена" Nullable="false" Precision="19" Scale="4" Type="decimal" />
         </EntityType>
         <Association Name="FK_Запись_Машина">
-          <End Role="Машина" Type="Self.Машина" Multiplicity="1" />
-          <End Role="Запись" Type="Self.Запись" Multiplicity="*" />
+          <End Type="Self.Машина" Multiplicity="1" Role="Машина" />
+          <End Type="Self.Запись" Multiplicity="*" Role="Запись" />
           <ReferentialConstraint>
             <Principal Role="Машина">
               <PropertyRef Name="ИД_Машины" />
@@ -62,8 +62,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Запись_Работник">
-          <End Role="Работник" Type="Self.Работник" Multiplicity="1" />
-          <End Role="Запись" Type="Self.Запись" Multiplicity="*" />
+          <End Type="Self.Работник" Multiplicity="1" Role="Работник" />
+          <End Type="Self.Запись" Multiplicity="*" Role="Запись" />
           <ReferentialConstraint>
             <Principal Role="Работник">
               <PropertyRef Name="ИД_Работника" />
@@ -74,8 +74,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Запись_Услуги">
-          <End Role="Услуги" Type="Self.Услуги" Multiplicity="1" />
-          <End Role="Запись" Type="Self.Запись" Multiplicity="*" />
+          <End Type="Self.Услуги" Multiplicity="1" Role="Услуги" />
+          <End Type="Self.Запись" Multiplicity="*" Role="Запись" />
           <ReferentialConstraint>
             <Principal Role="Услуги">
               <PropertyRef Name="ИД_Услуги" />
@@ -92,16 +92,16 @@
           <EntitySet Name="Работник" EntityType="Self.Работник" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Услуги" EntityType="Self.Услуги" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Запись_Машина" Association="Self.FK_Запись_Машина">
-            <End Role="Машина" EntitySet="Машина" />
-            <End Role="Запись" EntitySet="Запись" />
+            <End EntitySet="Машина" Role="Машина" />
+            <End EntitySet="Запись" Role="Запись" />
           </AssociationSet>
           <AssociationSet Name="FK_Запись_Работник" Association="Self.FK_Запись_Работник">
-            <End Role="Работник" EntitySet="Работник" />
-            <End Role="Запись" EntitySet="Запись" />
+            <End EntitySet="Работник" Role="Работник" />
+            <End EntitySet="Запись" Role="Запись" />
           </AssociationSet>
           <AssociationSet Name="FK_Запись_Услуги" Association="Self.FK_Запись_Услуги">
-            <End Role="Услуги" EntitySet="Услуги" />
-            <End Role="Запись" EntitySet="Запись" />
+            <End EntitySet="Услуги" Role="Услуги" />
+            <End EntitySet="Запись" Role="Запись" />
           </AssociationSet>
         </EntityContainer>
       </Schema>

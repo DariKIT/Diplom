@@ -12,23 +12,14 @@ namespace Zolotoy_telenok_0._1
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
+    
     public partial class ZTDBEntities : DbContext
     {
-        private static ZTDBEntities _Context;
-        
         public ZTDBEntities()
             : base("name=ZTDBEntities")
         {
         }
-        
-        public static ZTDBEntities GetContext()
-        {
-            if(_Context == null)
-                _Context = new ZTDBEntities();
-            return _Context;
-        }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

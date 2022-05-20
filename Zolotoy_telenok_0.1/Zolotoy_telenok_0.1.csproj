@@ -103,6 +103,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ZTDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ZTDBEntities.cs" />
     <Compile Include="Запись.cs">
       <DependentUpon>ZTDB.tt</DependentUpon>
     </Compile>

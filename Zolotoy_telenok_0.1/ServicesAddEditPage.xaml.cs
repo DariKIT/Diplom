@@ -20,8 +20,12 @@ namespace Zolotoy_telenok_0._1
     /// </summary>
     public partial class ServicesAddEditPage : Page
     {
-        public ServicesAddEditPage()
+        private Услуги _CurServices = new Услуги();
+        public ServicesAddEditPage(Услуги _SelectedServices)
         {
+            if (_SelectedServices != null)
+                _CurServices = _SelectedServices;
+            DataContext = _CurServices;
             InitializeComponent();
         }
 
@@ -33,6 +37,36 @@ namespace Zolotoy_telenok_0._1
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
 
+        }
+
+        private void SaveServicesBtn_Click(object sender, RoutedEventArgs e)
+        {
+            StringBuilder Errors = new StringBuilder();
+            if (string.IsNullOrWhiteSpace(_CurServices.Наименование))
+                Errors.AppendLine("Введите наименование услуги!");
+            if (string.IsNullOrWhiteSpace(_CurServices.Описание))
+                Errors.AppendLine("Введите описание услуги!");
+            if (string.IsNullOrWhiteSpace(Convert.ToString(_CurServices.Цена)))
+                Errors.AppendLine("Введите цену услуги");
+            if (Errors.Length > 0)
+            {
+                MessageBox.Show(Errors.ToString());
+                return;
+            }
+
+            if (_CurServices.ИД_Услуги == 0)
+                ZTDBEntities.GetContext().Услуги.Add(_CurServices);
+            try
+            {
+                ZTDBEntities.GetContext().SaveChanges();
+                MessageBox.Show("Сохранено");
+                Manager.MainFrame.GoBack();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+                return;
+            }
         }
     }
 }

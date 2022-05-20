@@ -23,11 +23,13 @@ namespace Zolotoy_telenok_0._1
         public MainPage()
         {
             InitializeComponent();
+
             CarsList.ItemsSource = ZTDBEntities.GetContext().Машина.ToList();
             ServicesList.ItemsSource = ZTDBEntities.GetContext().Услуги.ToList();
             WorkerList.ItemsSource = ZTDBEntities.GetContext().Работник.ToList();
-            
-         
+            JournalList.ItemsSource = ZTDBEntities.GetContext().Запись.ToList();
+
+
         }
 
         private void CarsEditBtn_Click(object sender, RoutedEventArgs e) //Редактирование машин
@@ -62,11 +64,11 @@ namespace Zolotoy_telenok_0._1
             }
             if (WorkersTadItem.IsSelected)
             {
-                Manager.MainFrame.Navigate(new WorkersAddEditPage());
+                Manager.MainFrame.Navigate(new WorkersAddEditPage(null));
             }
             if (ServicesTapItem.IsSelected)
             {
-                Manager.MainFrame.Navigate(new ServicesAddEditPage());
+                Manager.MainFrame.Navigate(new ServicesAddEditPage(null));
             }
             if (CarsTabItem.IsSelected)
             {
@@ -79,6 +81,10 @@ namespace Zolotoy_telenok_0._1
         {
             ZTDBEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(i => i.Reload());
             CarsList.ItemsSource = ZTDBEntities.GetContext().Машина.ToList();
+            ServicesList.ItemsSource = ZTDBEntities.GetContext().Услуги.ToList();
+            WorkerList.ItemsSource = ZTDBEntities.GetContext().Работник.ToList();
         }
+
+        
     }
 }

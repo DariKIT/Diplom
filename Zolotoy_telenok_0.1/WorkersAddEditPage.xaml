@@ -29,7 +29,42 @@
             </materialDesign:Card>
             <Border Margin="0,72,0,0">
                 <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <TextBox materialDesign:HintAssist.Hint="Фамилия" Width="300"
+                    materialDesign:TextFieldAssist.TextBoxViewMargin="1 0 1 0"
+                    materialDesign:HintAssist.FloatingScale="0.50"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    FontSize="24" Cursor="Arrow"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Фамилия}">
+                    </TextBox>
+                    
+                    <TextBox materialDesign:HintAssist.Hint="Имя" Width="300" Grid.Row="1"
+                    materialDesign:TextFieldAssist.TextBoxViewMargin="1 0 1 0"
+                    materialDesign:HintAssist.FloatingScale="0.50"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    FontSize="24" Cursor="Arrow"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Имя}">
+                    </TextBox>
 
+                    <TextBox materialDesign:HintAssist.Hint="Отчество" Width="300" Grid.Row="2"
+                    materialDesign:TextFieldAssist.TextBoxViewMargin="1 0 1 0"
+                    materialDesign:HintAssist.FloatingScale="0.50"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    FontSize="24" Cursor="Arrow"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Отчество}">
+                    </TextBox>
+
+                    <TextBox materialDesign:HintAssist.Hint="Телефон" Width="300" Grid.Row="3"
+                    materialDesign:TextFieldAssist.TextBoxViewMargin="1 0 1 0"
+                    materialDesign:HintAssist.FloatingScale="0.50"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    FontSize="24" Cursor="Arrow"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Телефон}" PreviewTextInput="NumberValidationTextBox" MaxLength="12"> 
+                    </TextBox>
+                    <Button Grid.Row="4" Grid.ColumnSpan="2" Width="150" Height="45" VerticalAlignment="Center" Content="Сохранить" x:Name="SaveWorkerAddBtn" Click="SaveWorkerAddBtn_Click"></Button>
                 </Grid>
             </Border>
         </Grid>

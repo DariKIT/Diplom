@@ -59,6 +59,7 @@
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                     FontSize="24" Cursor="Arrow"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Цена}" PreviewTextInput="NumberValidationTextBox" MaxLength="4">
                     </TextBox>
+                    <Button Grid.Row="3" Grid.ColumnSpan="2" Width="150" Height="45" VerticalAlignment="Center" Content="Сохранить" x:Name="SaveServicesBtn" Click="SaveServicesBtn_Click"></Button>
                 </Grid>
             </Border>
         </Grid>
