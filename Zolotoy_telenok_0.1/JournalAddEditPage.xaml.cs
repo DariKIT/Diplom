@@ -20,10 +20,14 @@ namespace Zolotoy_telenok_0._1
     /// </summary>
     public partial class JournalAddEditPage : Page
     {
+        
         public JournalAddEditPage()
         {
             InitializeComponent();
-            
+            CarsMarkCB.ItemsSource = ZTDBEntities.GetContext().Машина.Distinct().ToArray().ToList();
+
+
+
 
         }
 

@@ -20,12 +20,13 @@ namespace Zolotoy_telenok_0._1
             this.Запись = new HashSet<Запись>();
         }
     
+       
         public int ИД_Машины { get; set; }
         public string Марка { get; set; }
         public string Модель { get; set; }
         public int Класс { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+       [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Запись> Запись { get; set; }
     }
 }

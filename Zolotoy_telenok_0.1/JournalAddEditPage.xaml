@@ -28,7 +28,8 @@
         </materialDesign:Card>
         <Border Margin="0,72,0,0">
             <Grid>
-                
+                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}" x:Name="CarsMarkCB" DisplayMemberPath="Марка" materialDesign:HintAssist.Hint="Марка" Width="256" Height="45">
+                </ComboBox>
             </Grid>
         </Border>
     </Grid>
