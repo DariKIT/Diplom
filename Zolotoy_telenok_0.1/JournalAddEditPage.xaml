@@ -28,8 +28,16 @@
         </materialDesign:Card>
         <Border Margin="0,72,0,0">
             <Grid>
-                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}" x:Name="CarsMarkCB" DisplayMemberPath="Марка" materialDesign:HintAssist.Hint="Марка" Width="256" Height="45">
-                </ComboBox>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}" SelectedItem="{Binding ИД_Машины}" x:Name="CarsMarkCB" DisplayMemberPath="Cars" materialDesign:HintAssist.Hint="Марка" Width="256" Height="45" Grid.Row="0"></ComboBox>
+                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}" SelectedItem="{Binding ИД_Работнка}" x:Name="WorkerCB" DisplayMemberPath="Worker" materialDesign:HintAssist.Hint="Мойщик" Width="256" Height="45" Grid.Row="1"></ComboBox>
+                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}" SelectedItem="{Binding ИД_Услуги}" x:Name="ServicesCB" DisplayMemberPath="Наименование" materialDesign:HintAssist.Hint="Услуга" Width="256" Height="45" Grid.Row="2"></ComboBox>
+                <Button Grid.Row="3" Width="150" Height="45" VerticalAlignment="Center" Content="Сохранить" x:Name="SaveJournalBtn" Click="SaveJournalBtn_Click"></Button>
             </Grid>
         </Border>
     </Grid>

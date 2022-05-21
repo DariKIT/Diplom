@@ -20,14 +20,16 @@ namespace Zolotoy_telenok_0._1
     /// </summary>
     public partial class JournalAddEditPage : Page
     {
-        
-        public JournalAddEditPage()
+        private Запись _CurJournal = new Запись();
+        public JournalAddEditPage(Запись SelectedJournal)
         {
             InitializeComponent();
-            CarsMarkCB.ItemsSource = ZTDBEntities.GetContext().Машина.Distinct().ToArray().ToList();
-
-
-
+            DataContext = _CurJournal;
+            if (SelectedJournal != null)
+                _CurJournal = SelectedJournal;
+            CarsMarkCB.ItemsSource = ZTDBEntities.GetContext().Машина.ToList();
+            WorkerCB.ItemsSource = ZTDBEntities.GetContext().Работник.ToList();
+            ServicesCB.ItemsSource = ZTDBEntities.GetContext().Услуги.ToList();
 
         }
 
@@ -36,6 +38,28 @@ namespace Zolotoy_telenok_0._1
         private void back_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.GoBack();
+        }
+
+        private void SaveJournalBtn_Click(object sender, RoutedEventArgs e)
+        {
+            StringBuilder Errors = new StringBuilder();
+
+            if (_CurJournal.ИД_Машины == 0)
+                Errors.AppendLine("Выберите машину");
+            if (_CurJournal.ИД_Работнка == 0)
+                Errors.AppendLine("Выберите работника");
+            if (_CurJournal.ИД_Услуги == 0)
+                Errors.AppendLine("Выберите услугу");
+            if (Errors.Length > 0)
+            {
+                MessageBox.Show(Errors.ToString());
+                return;
+            }
+            if (_CurJournal.ИД_Записи == 0)
+            {
+                MessageBox.Show("Успех");
+                return;
+            }
         }
     }
 }

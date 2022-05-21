@@ -34,29 +34,29 @@ namespace Zolotoy_telenok_0._1
 
         private void CarsEditBtn_Click(object sender, RoutedEventArgs e) //Редактирование машин
         {
-
+            Manager.MainFrame.Navigate(new CarsAddEditPage((sender as Button).DataContext as Машина));
         }
 
         private void ServicesEditBtn_Click(object sender, RoutedEventArgs e) //Редактирование услуг
         {
-
+            Manager.MainFrame.Navigate(new ServicesAddEditPage((sender as Button).DataContext as Услуги));
         }
 
         private void WorkerEditBtn_Click(object sender, RoutedEventArgs e) //Редактирование сотрудников
         {
-
+            Manager.MainFrame.Navigate(new WorkersAddEditPage((sender as Button).DataContext as Работник));
         }
 
         private void JournalEditBtn_Click(object sender, RoutedEventArgs e)//Редактирование журнала
         {
-
+           
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)//Проверка кнопки
         {
             if (JournalTabItem.IsSelected)
             {
-                Manager.MainFrame.Navigate(new JournalAddEditPage());
+                Manager.MainFrame.Navigate(new JournalAddEditPage(null));
             }
             if (ApplicationsTabItem.IsSelected)
             {

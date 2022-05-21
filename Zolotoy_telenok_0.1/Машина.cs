@@ -25,6 +25,16 @@ namespace Zolotoy_telenok_0._1
         public string Марка { get; set; }
         public string Модель { get; set; }
         public int Класс { get; set; }
+        public string Cars
+        {
+            get
+            {
+                
+                return Марка + " " + Модель + " Класс:" + Класс;
+            }
+        
+        }
+
 
        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Запись> Запись { get; set; }
