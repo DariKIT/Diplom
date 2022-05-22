@@ -66,7 +66,7 @@ namespace Zolotoy_telenok_0._1
             }
             else
             {
-                return 0;
+                return (int)услуга.Цена;
             }
         }
 

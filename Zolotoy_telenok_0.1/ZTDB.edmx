@@ -4,108 +4,108 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ZTDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="ZTDBModelStoreContainer">
-    <EntitySet Name="Запись" EntityType="ZTDBModel.Store.Запись" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Клиент" EntityType="ZTDBModel.Store.Клиент" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Машина" EntityType="ZTDBModel.Store.Машина" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Работник" EntityType="ZTDBModel.Store.Работник" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Услуги" EntityType="ZTDBModel.Store.Услуги" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_Запись_Машина" Association="ZTDBModel.Store.FK_Запись_Машина">
-      <End Role="Машина" EntitySet="Машина" />
-      <End Role="Запись" EntitySet="Запись" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Запись_Работник" Association="ZTDBModel.Store.FK_Запись_Работник">
-      <End Role="Работник" EntitySet="Работник" />
-      <End Role="Запись" EntitySet="Запись" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Запись_Услуги" Association="ZTDBModel.Store.FK_Запись_Услуги">
-      <End Role="Услуги" EntitySet="Услуги" />
-      <End Role="Запись" EntitySet="Запись" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Запись">
-    <Key>
-      <PropertyRef Name="ИД_Записи" />
-    </Key>
-    <Property Name="ИД_Записи" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ИД_Машины" Type="int" Nullable="false" />
-    <Property Name="ИД_Работнка" Type="int" Nullable="false" />
-    <Property Name="ИД_Услуги" Type="int" Nullable="false" />
-    <Property Name="Сумма" Type="decimal" Nullable="true" Precision="19" Scale="4" />
-  </EntityType>
-  <EntityType Name="Клиент">
-    <Key>
-      <PropertyRef Name="ИД_Клиента" />
-    </Key>
-    <Property Name="ИД_Клиента" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Номер_авто" Type="nvarchar" Nullable="true" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="Машина">
-    <Key>
-      <PropertyRef Name="ИД_Машины" />
-    </Key>
-    <Property Name="ИД_Машины" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Марка" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="Модель" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="Класс" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Работник">
-    <Key>
-      <PropertyRef Name="ИД_Работника" />
-    </Key>
-    <Property Name="ИД_Работника" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Фамилия" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="Имя" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="Отчество" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="Телефон" Type="nvarchar" Nullable="false" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="Услуги">
-    <Key>
-      <PropertyRef Name="ИД_Услуги" />
-    </Key>
-    <Property Name="ИД_Услуги" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Наименование" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="Описание" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Цена" Type="decimal" Nullable="false" Precision="19" Scale="4" />
-  </EntityType>
-  <Association Name="FK_Запись_Машина">
-    <End Role="Машина" Type="ZTDBModel.Store.Машина" Multiplicity="1" />
-    <End Role="Запись" Type="ZTDBModel.Store.Запись" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Машина">
-        <PropertyRef Name="ИД_Машины" />
-      </Principal>
-      <Dependent Role="Запись">
-        <PropertyRef Name="ИД_Машины" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Запись_Работник">
-    <End Role="Работник" Type="ZTDBModel.Store.Работник" Multiplicity="1" />
-    <End Role="Запись" Type="ZTDBModel.Store.Запись" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Работник">
-        <PropertyRef Name="ИД_Работника" />
-      </Principal>
-      <Dependent Role="Запись">
-        <PropertyRef Name="ИД_Работнка" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Запись_Услуги">
-    <End Role="Услуги" Type="ZTDBModel.Store.Услуги" Multiplicity="1" />
-    <End Role="Запись" Type="ZTDBModel.Store.Запись" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Услуги">
-        <PropertyRef Name="ИД_Услуги" />
-      </Principal>
-      <Dependent Role="Запись">
-        <PropertyRef Name="ИД_Услуги" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="ZTDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Запись">
+          <Key>
+            <PropertyRef Name="ИД_Записи" />
+          </Key>
+          <Property Name="ИД_Записи" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ИД_Машины" Type="int" Nullable="false" />
+          <Property Name="ИД_Работнка" Type="int" Nullable="false" />
+          <Property Name="ИД_Услуги" Type="int" Nullable="false" />
+          <Property Name="Сумма" Type="money" />
+        </EntityType>
+        <EntityType Name="Клиент">
+          <Key>
+            <PropertyRef Name="ИД_Клиента" />
+          </Key>
+          <Property Name="ИД_Клиента" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Номер_авто" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Машина">
+          <Key>
+            <PropertyRef Name="ИД_Машины" />
+          </Key>
+          <Property Name="ИД_Машины" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Марка" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Модель" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Класс" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Работник">
+          <Key>
+            <PropertyRef Name="ИД_Работника" />
+          </Key>
+          <Property Name="ИД_Работника" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Отчество" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Телефон" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Услуги">
+          <Key>
+            <PropertyRef Name="ИД_Услуги" />
+          </Key>
+          <Property Name="ИД_Услуги" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Наименование" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Описание" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Цена" Type="money" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Запись_Машина">
+          <End Role="Машина" Type="Self.Машина" Multiplicity="1" />
+          <End Role="Запись" Type="Self.Запись" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Машина">
+              <PropertyRef Name="ИД_Машины" />
+            </Principal>
+            <Dependent Role="Запись">
+              <PropertyRef Name="ИД_Машины" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Запись_Работник">
+          <End Role="Работник" Type="Self.Работник" Multiplicity="1" />
+          <End Role="Запись" Type="Self.Запись" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Работник">
+              <PropertyRef Name="ИД_Работника" />
+            </Principal>
+            <Dependent Role="Запись">
+              <PropertyRef Name="ИД_Работнка" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Запись_Услуги">
+          <End Role="Услуги" Type="Self.Услуги" Multiplicity="1" />
+          <End Role="Запись" Type="Self.Запись" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Услуги">
+              <PropertyRef Name="ИД_Услуги" />
+            </Principal>
+            <Dependent Role="Запись">
+              <PropertyRef Name="ИД_Услуги" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ZTDBModelStoreContainer">
+          <EntitySet Name="Запись" EntityType="Self.Запись" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Клиент" EntityType="Self.Клиент" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Машина" EntityType="Self.Машина" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Работник" EntityType="Self.Работник" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Услуги" EntityType="Self.Услуги" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Запись_Машина" Association="Self.FK_Запись_Машина">
+            <End Role="Машина" EntitySet="Машина" />
+            <End Role="Запись" EntitySet="Запись" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Запись_Работник" Association="Self.FK_Запись_Работник">
+            <End Role="Работник" EntitySet="Работник" />
+            <End Role="Запись" EntitySet="Запись" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Запись_Услуги" Association="Self.FK_Запись_Услуги">
+            <End Role="Услуги" EntitySet="Услуги" />
+            <End Role="Запись" EntitySet="Запись" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ZTDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">

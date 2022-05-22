@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Users\zzmin\Source\Repos\Diplom\Zolotoy_telenok_0.1\ZTDB.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Users\gabah\source\repos\Zolotoy_telenok_0.1\Zolotoy_telenok_0.1\ZTDB.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.
