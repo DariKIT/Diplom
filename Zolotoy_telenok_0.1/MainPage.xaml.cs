@@ -49,7 +49,7 @@ namespace Zolotoy_telenok_0._1
 
         private void JournalEditBtn_Click(object sender, RoutedEventArgs e)//Редактирование журнала
         {
-           
+            Manager.MainFrame.Navigate(new JournalAddEditPage((sender as Button).DataContext as Запись));
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)//Проверка кнопки
@@ -83,8 +83,94 @@ namespace Zolotoy_telenok_0._1
             CarsList.ItemsSource = ZTDBEntities.GetContext().Машина.ToList();
             ServicesList.ItemsSource = ZTDBEntities.GetContext().Услуги.ToList();
             WorkerList.ItemsSource = ZTDBEntities.GetContext().Работник.ToList();
+            JournalList.ItemsSource = ZTDBEntities.GetContext().Запись.ToList();
         }
 
-        
+        private void RemBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (JournalTabItem.IsSelected)
+            {
+                var WorkForRem = JournalList.SelectedItems.Cast<Запись>().ToList();
+                if (MessageBox.Show($"Хотите ли вы удалить {WorkForRem.Count()} Элементы?", "Внимание",
+                    MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        ZTDBEntities.GetContext().Запись.RemoveRange(WorkForRem);
+                        ZTDBEntities.GetContext().SaveChanges();
+                        JournalList.ItemsSource = ZTDBEntities.GetContext().Запись.ToList();
+                        MessageBox.Show("Данные удалены");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString());
+                    }
+                }
+            }
+            if (ApplicationsTabItem.IsSelected)
+            {
+
+            }
+            if (WorkersTadItem.IsSelected)
+            {
+                var WorkersForRem = WorkerList.SelectedItems.Cast<Работник>().ToList();
+                if (MessageBox.Show($"Хотите ли вы удалить {WorkersForRem.Count()} Элементы?", "Внимание",
+                    MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        ZTDBEntities.GetContext().Работник.RemoveRange(WorkersForRem);
+                        ZTDBEntities.GetContext().SaveChanges();
+                        WorkerList.ItemsSource = ZTDBEntities.GetContext().Работник.ToList();
+                        MessageBox.Show("Данные удалены");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString());
+                    }
+
+                }
+            }
+            if (ServicesTapItem.IsSelected)
+            {
+                var ServicesForRem = ServicesList.SelectedItems.Cast<Услуги>().ToList();
+                if (MessageBox.Show($"Хотите ли вы удалить {ServicesForRem.Count()} Элементы?", "Внимание",
+                    MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        ZTDBEntities.GetContext().Услуги.RemoveRange(ServicesForRem);
+                        ZTDBEntities.GetContext().SaveChanges();
+                        ServicesList.ItemsSource = ZTDBEntities.GetContext().Услуги.ToList();
+                        MessageBox.Show("Данные удалены");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString());
+                    }
+
+                }
+            }
+            if (CarsTabItem.IsSelected)
+            {
+                var CarsForRem = CarsList.SelectedItems.Cast<Машина>().ToList();
+                if (MessageBox.Show($"Хотите ли вы удалить {CarsForRem.Count()} Элементы?", "Внимание",
+                    MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        ZTDBEntities.GetContext().Машина.RemoveRange(CarsForRem);
+                        ZTDBEntities.GetContext().SaveChanges();
+                        CarsList.ItemsSource = ZTDBEntities.GetContext().Машина.ToList();
+                        MessageBox.Show("Данные удалены");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString());
+                    }
+
+                }
+            }
+        }
     }
 }
