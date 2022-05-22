@@ -46,8 +46,41 @@ namespace Zolotoy_telenok_0._1
             Manager.MainFrame.GoBack();
         }
 
+        private int GetSumma(Машина машина, Услуги услуга)
+        {
+            if(машина.Класс == 2)
+            {
+                return (int)(Convert.ToInt64(услуга.Цена) * 1.2);
+            }
+            else if(машина.Класс == 3)
+            {
+                return (int)(Convert.ToInt64(услуга.Цена) * 1.3);
+            }
+            else if(машина.Класс == 4)
+            {
+                return (int)(Convert.ToInt64(услуга.Цена) * 1.4);
+            }
+            else if(машина.Класс == 5)
+            {
+                return (int)(Convert.ToInt64(услуга.Цена) * 1.5);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
         private void SaveJournalBtn_Click(object sender, RoutedEventArgs e)
         {
+            //MessageBox.Show((CarsMarkCB.SelectedItem as Машина).ИД_Машины.ToString());
+            ZTDBEntities.GetContext().Запись.Add(new Запись()
+            {
+                Машина = CarsMarkCB.SelectedItem as Машина,
+                Работник = WorkerCB.SelectedItem as Работник,
+                Услуги = ServicesCB.SelectedItem as Услуги,
+                Сумма = GetSumma(CarsMarkCB.SelectedItem as Машина, ServicesCB.SelectedItem as Услуги)
+            });
+            ZTDBEntities.GetContext().SaveChanges();
            /* StringBuilder Errors = new StringBuilder();
 
             if (_CurCar.Cars == null)

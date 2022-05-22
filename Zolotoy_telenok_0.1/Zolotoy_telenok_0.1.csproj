@@ -49,7 +49,9 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=4.5.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.4.5.0\lib\net452\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
@@ -82,6 +84,8 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Manager.cs" />
+    <Compile Include="PartialClasses\Cars.cs" />
+    <Compile Include="PartialClasses\Workers.cs" />
     <Compile Include="ServicesAddEditPage.xaml.cs">
       <DependentUpon>ServicesAddEditPage.xaml</DependentUpon>
     </Compile>
@@ -192,6 +196,7 @@
       <LastGenOutput>ZTDB.Context.cs</LastGenOutput>
       <DependentUpon>ZTDB.edmx</DependentUpon>
     </Content>
+    <Content Include="ZTDB.edmx.sql" />
     <Content Include="ZTDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ZTDB.edmx</DependentUpon>

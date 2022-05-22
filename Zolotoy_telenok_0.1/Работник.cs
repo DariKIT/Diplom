@@ -25,10 +25,6 @@ namespace Zolotoy_telenok_0._1
         public string Имя { get; set; }
         public string Отчество { get; set; }
         public string Телефон { get; set; }
-        public string Worker
-        {
-            get { return Фамилия + " " + Имя; }
-        }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Запись> Запись { get; set; }
