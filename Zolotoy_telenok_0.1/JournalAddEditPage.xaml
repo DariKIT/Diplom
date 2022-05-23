@@ -17,7 +17,8 @@
       Title="JournalAddEditPage">
 
     <Grid>
-        <materialDesign:Card>
+
+        <materialDesign:Card Grid.ColumnSpan="2">
             <TabControl materialDesign:ColorZoneAssist.Mode="PrimaryMid" materialDesign:NavigationRailAssist.SelectionCornerRadius="10 10 10 10" materialDesign:NavigationRailAssist.ShowSelectionBackground="True" Style="{StaticResource MaterialDesignNavigationRailTabControl}" TabStripPlacement="Top">
                 <materialDesign:NavigationRailAssist.FloatingContent>
                     <Button x:Name="back" Click="back_Click" Cursor="Hand" Margin="8" Style="{StaticResource MaterialDesignFloatingActionAccentButton}">
@@ -26,8 +27,9 @@
                 </materialDesign:NavigationRailAssist.FloatingContent>
             </TabControl>
         </materialDesign:Card>
-        <Border Margin="0,72,0,0">
+        <Border Margin="0,72,0,0" Grid.ColumnSpan="2">
             <Grid>
+               
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -35,63 +37,18 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}" SelectedItem="{Binding Запись.ИД_Машины}" IsEditable="True" x:Name="CarsMarkCB" DisplayMemberPath="Cars" materialDesign:HintAssist.Hint="Марка" Width="256" Height="45" Grid.Row="0"></ComboBox>
-                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}" SelectedItem="{Binding Запись.ИД_Работнка}" IsEditable="True" x:Name="WorkerCB" DisplayMemberPath="Worker" materialDesign:HintAssist.Hint="Мойщик" Width="256" Height="45" Grid.Row="1"></ComboBox>
-                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}" SelectedItem="{Binding Запись.ИД_Услуги}" IsEditable="True" x:Name="ServicesCB" DisplayMemberPath="Наименование" materialDesign:HintAssist.Hint="Услуга" Width="256" Height="45" Grid.Row="2"></ComboBox>
-                <DatePicker Grid.Row="3" Width="200" materialDesign:HintAssist.Hint="Custom" SelectedDate ="{Binding Запись.Дата}" x:Name="DataPick">
-                    <DatePicker.Resources>
-                        <Style x:Key="CustomCalendarDayButton" TargetType="CalendarDayButton" BasedOn="{StaticResource MaterialDesignCalendarDayButton}">
-                            <Setter
-                                    Property="materialDesign:CalendarAssist.SelectionColor"
-                                     Value="#B2F39B" />
-                            <Setter
-                                    Property="materialDesign:CalendarAssist.SelectionForegroundColor"
-                                    Value="#FF1E6E79" />
-                        </Style>
-                        <Style
-                                x:Key="CustomCalendarButton"
-                                TargetType="CalendarButton"
-                                BasedOn="{StaticResource MaterialDesignCalendarButton}">
-                            <Setter
-        Property="materialDesign:CalendarAssist.SelectionColor"
-        Value="#B2F39B" />
-                            <Setter
-        Property="materialDesign:CalendarAssist.SelectionForegroundColor"
-        Value="Black" />
-                        </Style>
-                        <Style
-      x:Key="CustomCalendar"
-      TargetType="{x:Type Calendar}"
-      BasedOn="{StaticResource MaterialDesignDatePickerCalendarPortrait}">
-                            <Setter
-        Property="Background"
-        Value="#343C3F" />
-                            <Setter
-        Property="Foreground"
-        Value="White" />
-                            <Setter
-        Property="materialDesign:CalendarAssist.HeaderBackground"
-        Value="#A2E9FF" />
-                            <Setter
-        Property="materialDesign:CalendarAssist.HeaderForeground"
-        Value="Black" />
-                            <Setter
-        Property="CalendarDayButtonStyle"
-        Value="{StaticResource CustomCalendarDayButton}" />
-                            <Setter
-        Property="CalendarButtonStyle"
-        Value="{StaticResource CustomCalendarButton}" />
-                        </Style>
-                        <Style
-      TargetType="DatePicker"
-      BasedOn="{StaticResource MaterialDesignFloatingHintDatePicker}">
-                            <Setter
-        Property="CalendarStyle"
-        Value="{StaticResource CustomCalendar}" />
-                        </Style>
-                    </DatePicker.Resources>
+                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}" SelectedItem="{Binding Запись.ИД_Машины}" IsEditable="True" x:Name="CarsMarkCB" DisplayMemberPath="Cars" materialDesign:HintAssist.Hint="Марка" Width="256" Height="45" Grid.Row="0" Grid.ColumnSpan="2"></ComboBox>
+                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}" SelectedItem="{Binding Запись.ИД_Работнка}" IsEditable="True" x:Name="WorkerCB" DisplayMemberPath="Worker" materialDesign:HintAssist.Hint="Мойщик" Width="256" Height="45" Grid.Row="1" Grid.Column="0" ></ComboBox>
+                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}" SelectedItem="{Binding Запись.ИД_Услуги}" IsEditable="True" x:Name="ServicesCB" DisplayMemberPath="Наименование" materialDesign:HintAssist.Hint="Услуга" Width="256" Height="45" Grid.Row="2" Grid.ColumnSpan="2" ></ComboBox>
+
+
+              
+
+
+                <DatePicker Grid.Row="3" Width="200" materialDesign:HintAssist.Hint="Pick Date" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate ="{Binding Запись.Дата}" x:Name="DataPick" Grid.ColumnSpan="2">
                 </DatePicker>
-                <Button Grid.Row="4" Width="150" Height="45" VerticalAlignment="Center" Content="Сохранить" x:Name="SaveJournalBtn" Click="SaveJournalBtn_Click"></Button>
+
+                <Button Grid.Row="4" Width="150" Height="45" VerticalAlignment="Center" Content="Сохранить" x:Name="SaveJournalBtn" Click="SaveJournalBtn_Click" Grid.ColumnSpan="2" Margin="325,0,325,0"></Button>
             </Grid>
         </Border>
     </Grid>

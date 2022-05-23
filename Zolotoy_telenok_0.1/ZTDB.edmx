@@ -13,7 +13,7 @@
           <Property Name="ИД_Машины" Type="int" Nullable="false" />
           <Property Name="ИД_Работнка" Type="int" Nullable="false" />
           <Property Name="ИД_Услуги" Type="int" Nullable="false" />
-          <Property Name="Дата" Type="datetime" />
+          <Property Name="Дата" Type="date" Nullable="false" />
           <Property Name="Сумма" Type="money" Nullable="false" />
         </EntityType>
         <EntityType Name="Клиент">
@@ -122,7 +122,7 @@
           <NavigationProperty Name="Работник" Relationship="Self.FK_Запись_Работник" FromRole="Запись" ToRole="Работник" />
           <NavigationProperty Name="Услуги" Relationship="Self.FK_Запись_Услуги" FromRole="Запись" ToRole="Услуги" />
           <Property Name="Сумма" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Дата" Type="DateTime" Precision="3" />
+          <Property Name="Дата" Type="DateTime" Precision="0" Nullable="false" />
         </EntityType>
         <EntityType Name="Клиент">
           <Key>
@@ -226,7 +226,7 @@
     <EntitySetMapping Name="Запись">
       <EntityTypeMapping TypeName="IsTypeOf(ZTDBModel.Запись)">
         <MappingFragment StoreEntitySet="Запись">
-          <ScalarProperty Name="Дата" ColumnName="Дата" />
+                <ScalarProperty Name="Дата" ColumnName="Дата" />
                 <ScalarProperty Name="ИД_Записи" ColumnName="ИД_Записи" />
           <ScalarProperty Name="ИД_Машины" ColumnName="ИД_Машины" />
           <ScalarProperty Name="ИД_Работнка" ColumnName="ИД_Работнка" />
