@@ -11,15 +11,18 @@ namespace Zolotoy_telenok_0._1
     /// </summary>
     public partial class JournalAddEditPage : Page
     {
-        private Запись Запись = new Запись();
+        private Запись _CurJournal = new Запись();
         public JournalAddEditPage(Запись SelectedJournal)
         {
             InitializeComponent();
-            if (SelectedJournal == null)
-                Запись = SelectedJournal;
+
             CarsMarkCB.ItemsSource = ZTDBEntities.GetContext().Машина.ToList();
             WorkerCB.ItemsSource = ZTDBEntities.GetContext().Работник.ToList();
             ServicesCB.ItemsSource = ZTDBEntities.GetContext().Услуги.ToList();
+
+            if (SelectedJournal == null)
+                _CurJournal = SelectedJournal;
+            DataContext = _CurJournal;
 
         }
 
@@ -71,7 +74,18 @@ namespace Zolotoy_telenok_0._1
                 return;
             }
 
-            ZTDBEntities.GetContext().Запись.Add(new Запись()
+            if(_CurJournal.ИД_Записи == 0)
+            {
+                ZTDBEntities.GetContext().Запись.Add(new Запись()
+                {
+                    Машина = CarsMarkCB.SelectedItem as Машина,
+                    Работник = WorkerCB.SelectedItem as Работник,
+                    Услуги = ServicesCB.SelectedItem as Услуги,
+                    Сумма = GetSumma(CarsMarkCB.SelectedItem as Машина, ServicesCB.SelectedItem as Услуги)
+
+                });
+            }
+            /*ZTDBEntities.GetContext().Запись.Add(new Запись()
             {
 
                 
@@ -80,7 +94,7 @@ namespace Zolotoy_telenok_0._1
                 Услуги = ServicesCB.SelectedItem as Услуги,
                 Сумма = GetSumma(CarsMarkCB.SelectedItem as Машина, ServicesCB.SelectedItem as Услуги)
 
-            });
+            });*/
             ZTDBEntities.GetContext().SaveChanges();
 
         }
