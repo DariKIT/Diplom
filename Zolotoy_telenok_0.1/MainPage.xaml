@@ -62,6 +62,7 @@
                                             <RowDefinition Height="*"></RowDefinition>
                                             <RowDefinition Height="*"></RowDefinition>
                                             <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -74,15 +75,17 @@
                                         <TextBlock Grid.Row="4" Grid.Column="0" Text="Фамилия мойщика" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
                                         <TextBlock Grid.Row="5" Grid.Column="0" Text="Имя мойщика" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
                                         <TextBlock Grid.Row="6" Grid.Column="0" Text="Услуга" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
-                                        <TextBlock Grid.Row="7" Grid.Column="0" Text="Цена" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="7" Grid.Column="0" Text="Дата" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="8" Grid.Column="0" Text="Цена" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
                                         <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Машина.Марка}" Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
                                         <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Машина.Модель}" Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
                                         <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Машина.Класс}" Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
                                         <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Работник.Фамилия}" Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
                                         <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Работник.Имя}" Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
                                         <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding Услуги.Наименование}" Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
-                                        <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding Сумма}" Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
-                                        <Button Grid.Row="8" Grid.Column="0" Content="Редактировать" x:Name="JournalEditBtn" Click="JournalEditBtn_Click"></Button>
+                                        <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding Дата}" Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="8" Grid.Column="1" Text="{Binding Сумма}" Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <Button Grid.Row="9" Grid.Column="0" Content="Редактировать" x:Name="JournalEditBtn" Click="JournalEditBtn_Click"></Button>
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>

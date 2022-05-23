@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Controls;
 
 namespace Zolotoy_telenok_0._1
@@ -60,7 +61,7 @@ namespace Zolotoy_telenok_0._1
 
         private void SaveJournalBtn_Click(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show((CarsMarkCB.SelectedItem as Машина).ИД_Машины.ToString());
+            MessageBox.Show((DataPick.SelectedDate).ToString());
             StringBuilder Errors = new StringBuilder();
             if ((CarsMarkCB.SelectedItem as Машина) == null)
                 Errors.AppendLine("Вы не выбрали машину");
@@ -74,27 +75,18 @@ namespace Zolotoy_telenok_0._1
                 return;
             }
 
-            if(_CurJournal.ИД_Записи == 0)
-            {
+            
+            
                 ZTDBEntities.GetContext().Запись.Add(new Запись()
                 {
                     Машина = CarsMarkCB.SelectedItem as Машина,
                     Работник = WorkerCB.SelectedItem as Работник,
                     Услуги = ServicesCB.SelectedItem as Услуги,
-                    Сумма = GetSumma(CarsMarkCB.SelectedItem as Машина, ServicesCB.SelectedItem as Услуги)
+                    Сумма = GetSumma(CarsMarkCB.SelectedItem as Машина, ServicesCB.SelectedItem as Услуги),
+                    Дата = DataPick.SelectedDate.Value,
 
                 });
-            }
-            /*ZTDBEntities.GetContext().Запись.Add(new Запись()
-            {
-
-                
-                Машина = CarsMarkCB.SelectedItem as Машина,
-                Работник = WorkerCB.SelectedItem as Работник,
-                Услуги = ServicesCB.SelectedItem as Услуги,
-                Сумма = GetSumma(CarsMarkCB.SelectedItem as Машина, ServicesCB.SelectedItem as Услуги)
-
-            });*/
+            
             ZTDBEntities.GetContext().SaveChanges();
 
         }
