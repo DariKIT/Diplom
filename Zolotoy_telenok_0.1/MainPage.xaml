@@ -22,11 +22,11 @@
                 
                 <materialDesign:NavigationRailAssist.FloatingContent>
                     <Grid Width="135">
-                        <Button x:Name="AddBtn" Click="AddBtn_Click" Margin="8" HorizontalAlignment="Right" Cursor="Hand" Background="#FFAEEA00" BorderThickness="0" >
+                        <Button x:Name="AddBtn" Click="AddBtn_Click" Height="50" Margin="8" HorizontalAlignment="Right" Cursor="Hand" Background="#FFAEEA00" BorderThickness="0" >
                             <materialDesign:PackIcon Width="24" Height="24" Kind="Plus" />
                         </Button>
 
-                        <Button x:Name="RemBtn" Click="RemBtn_Click" Margin="8" HorizontalAlignment="Left" Cursor="Hand" Background="#FFDC322F" BorderThickness="0">
+                        <Button x:Name="RemBtn" Click="RemBtn_Click" Height="50" Margin="8" HorizontalAlignment="Left" Cursor="Hand" Background="#FFDC322F" BorderThickness="0">
                                 <materialDesign:PackIcon Width="24" Height="24" Kind="Minus" />
                         </Button>
                     </Grid>
@@ -120,21 +120,22 @@
                                             <RowDefinition Height="*"></RowDefinition>
                                             <RowDefinition Height="*"></RowDefinition>
                                             <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Фамилия"></TextBlock>
-                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Имя"></TextBlock>
-                                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Отчество"></TextBlock>
-                                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Телефон"></TextBlock>
-                                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Фамилия}" Margin="15 0 0 0"></TextBlock>
-                                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Имя}" Margin="15 0 0 0"></TextBlock>
-                                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Отчество}" Margin="15 0 0 0"></TextBlock>
-                                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Телефон}" Margin="15 0 0 0"></TextBlock>
-                                        <Button Grid.RowSpan="4" Grid.Column="2" Content="Редактировать" x:Name="WorkerEditBtn" Click="WorkerEditBtn_Click"></Button>
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Фамилия" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Имя" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Отчество" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Телефон" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Фамилия}" Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Имя}" Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Отчество}" Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Телефон}" Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <Button Grid.Row="5" Grid.Column="0" Content="Редактировать" x:Name="WorkerEditBtn" Click="WorkerEditBtn_Click"></Button>
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -167,13 +168,13 @@
                                             <ColumnDefinition Width="100"></ColumnDefinition>
                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        
-                                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Наименование:"></TextBlock>
-                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Описание:"></TextBlock>
-                                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Цена:"></TextBlock>
-                                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Наименование}"  Margin="15 0 0 0"></TextBlock>
-                                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Описание}"  Margin="15 0 0 0"></TextBlock>
-                                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Цена}"  Margin="15 0 0 0"></TextBlock>
+
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Наименование:" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Описание:" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Цена:" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Наименование}"  Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Описание}"  Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Цена}"  Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
                                         <Button Grid.Row="3" Grid.ColumnSpan="1" Content="Редактировать" x:Name="ServicesEditBtn" Click="ServicesEditBtn_Click" HorizontalAlignment="Right"></Button>
                                         
                                     </Grid>
@@ -207,12 +208,12 @@
                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Марка:"></TextBlock>
-                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Модель:"></TextBlock>
-                                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Класс:"></TextBlock>
-                                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Марка}" Margin="15 0 0 0"></TextBlock>
-                                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Модель}" Margin="15 0 0 0"></TextBlock>
-                                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Класс}" Margin="15 0 0 0"></TextBlock>
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Марка:" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Модель:" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Класс:" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Марка}" Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Модель}" Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Класс}" Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
                                         <Button Grid.Row="4" Grid.Column="0" Content="Редактировать" x:Name="CarsEditBtn" Click="CarsEditBtn_Click"></Button>
                                     </Grid>
                                 </DataTemplate>
