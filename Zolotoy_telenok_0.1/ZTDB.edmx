@@ -21,7 +21,11 @@
             <PropertyRef Name="ИД_Клиента" />
           </Key>
           <Property Name="ИД_Клиента" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Номер_авто" Type="nvarchar" MaxLength="50" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ИдУслуги" Type="int" />
+          <Property Name="Время" Type="datetime" Nullable="false" />
+          <Property Name="Телефон" Type="nvarchar" MaxLength="12" Nullable="false" />
         </EntityType>
         <EntityType Name="Машина">
           <Key>
@@ -87,6 +91,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Клиент_Услуги">
+          <End Role="Услуги" Type="Self.Услуги" Multiplicity="0..1" />
+          <End Role="Клиент" Type="Self.Клиент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Услуги">
+              <PropertyRef Name="ИД_Услуги" />
+            </Principal>
+            <Dependent Role="Клиент">
+              <PropertyRef Name="ИдУслуги" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ZTDBModelStoreContainer">
           <EntitySet Name="Запись" EntityType="Self.Запись" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Клиент" EntityType="Self.Клиент" Schema="dbo" store:Type="Tables" />
@@ -104,6 +120,10 @@
           <AssociationSet Name="FK_Запись_Услуги" Association="Self.FK_Запись_Услуги">
             <End Role="Услуги" EntitySet="Услуги" />
             <End Role="Запись" EntitySet="Запись" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Клиент_Услуги" Association="Self.FK_Клиент_Услуги">
+            <End Role="Услуги" EntitySet="Услуги" />
+            <End Role="Клиент" EntitySet="Клиент" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -129,7 +149,12 @@
             <PropertyRef Name="ИД_Клиента" />
           </Key>
           <Property Name="ИД_Клиента" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Номер_авто" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Фамилия" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Имя" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ИдУслуги" Type="Int32" />
+          <Property Name="Время" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Телефон" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Услуги" Relationship="ZTDBModel.FK_Клиент_Услуги" FromRole="Клиент" ToRole="Услуги" />
         </EntityType>
         <EntityType Name="Машина">
           <Key>
@@ -161,6 +186,7 @@
           <Property Name="Описание" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Цена" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <NavigationProperty Name="Запись" Relationship="Self.FK_Запись_Услуги" FromRole="Услуги" ToRole="Запись" />
+          <NavigationProperty Name="Клиент" Relationship="ZTDBModel.FK_Клиент_Услуги" FromRole="Услуги" ToRole="Клиент" />
         </EntityType>
         <Association Name="FK_Запись_Машина">
           <End Role="Машина" Type="Self.Машина" Multiplicity="1" />
@@ -216,7 +242,23 @@
             <End Role="Услуги" EntitySet="Услуги" />
             <End Role="Запись" EntitySet="Запись" />
           </AssociationSet>
+          <AssociationSet Name="FK_Клиент_Услуги" Association="ZTDBModel.FK_Клиент_Услуги">
+            <End Role="Услуги" EntitySet="Услуги" />
+            <End Role="Клиент" EntitySet="Клиент" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Клиент_Услуги">
+          <End Type="ZTDBModel.Услуги" Role="Услуги" Multiplicity="0..1" />
+          <End Type="ZTDBModel.Клиент" Role="Клиент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Услуги">
+              <PropertyRef Name="ИД_Услуги" />
+            </Principal>
+            <Dependent Role="Клиент">
+              <PropertyRef Name="ИдУслуги" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -238,8 +280,12 @@
     <EntitySetMapping Name="Клиент">
       <EntityTypeMapping TypeName="IsTypeOf(ZTDBModel.Клиент)">
         <MappingFragment StoreEntitySet="Клиент">
-          <ScalarProperty Name="ИД_Клиента" ColumnName="ИД_Клиента" />
-          <ScalarProperty Name="Номер_авто" ColumnName="Номер_авто" />
+          <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+                <ScalarProperty Name="Время" ColumnName="Время" />
+                <ScalarProperty Name="ИдУслуги" ColumnName="ИдУслуги" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="ИД_Клиента" ColumnName="ИД_Клиента" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

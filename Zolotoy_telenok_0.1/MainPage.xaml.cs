@@ -28,7 +28,7 @@ namespace Zolotoy_telenok_0._1
             ServicesList.ItemsSource = ZTDBEntities.GetContext().Услуги.ToList();
             WorkerList.ItemsSource = ZTDBEntities.GetContext().Работник.ToList();
             JournalList.ItemsSource = ZTDBEntities.GetContext().Запись.ToList();
-
+            ClientList.ItemsSource = ZTDBEntities.GetContext().Клиент.ToList();
 
         }
 
@@ -109,7 +109,22 @@ namespace Zolotoy_telenok_0._1
             }
             if (ApplicationsTabItem.IsSelected)
             {
-
+                var ClientsForRem = ClientList.SelectedItems.Cast<Клиент>().ToList();
+                if (MessageBox.Show($"Хотите ли вы удалить {ClientsForRem.Count()} Элементы?", "Внимание",
+                    MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        ZTDBEntities.GetContext().Клиент.RemoveRange(ClientsForRem);
+                        ZTDBEntities.GetContext().SaveChanges();
+                        ClientList.ItemsSource = ZTDBEntities.GetContext().Клиент.ToList();
+                        MessageBox.Show("Данные удалены");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString());
+                    }
+                }
             }
             if (WorkersTadItem.IsSelected)
             {
@@ -172,5 +187,7 @@ namespace Zolotoy_telenok_0._1
                 }
             }
         }
+
+       
     }
 }

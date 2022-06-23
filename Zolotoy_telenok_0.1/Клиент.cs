@@ -15,6 +15,12 @@ namespace Zolotoy_telenok_0._1
     public partial class Клиент
     {
         public int ИД_Клиента { get; set; }
-        public string Номер_авто { get; set; }
+        public string Фамилия { get; set; }
+        public string Имя { get; set; }
+        public Nullable<int> ИдУслуги { get; set; }
+        public System.DateTime Время { get; set; }
+        public string Телефон { get; set; }
+    
+        public virtual Услуги Услуги { get; set; }
     }
 }

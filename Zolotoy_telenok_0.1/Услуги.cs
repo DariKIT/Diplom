@@ -18,6 +18,7 @@ namespace Zolotoy_telenok_0._1
         public Услуги()
         {
             this.Запись = new HashSet<Запись>();
+            this.Клиент = new HashSet<Клиент>();
         }
     
         public int ИД_Услуги { get; set; }
@@ -27,5 +28,7 @@ namespace Zolotoy_telenok_0._1
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Запись> Запись { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Клиент> Клиент { get; set; }
     }
 }

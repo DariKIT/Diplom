@@ -13,6 +13,7 @@
         <AssociationConnector Association="ZTDBModel.FK_Запись_Машина" ManuallyRouted="false" />
         <AssociationConnector Association="ZTDBModel.FK_Запись_Работник" ManuallyRouted="false" />
         <AssociationConnector Association="ZTDBModel.FK_Запись_Услуги" ManuallyRouted="false" />
+        <AssociationConnector Association="ZTDBModel.FK_Клиент_Услуги" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

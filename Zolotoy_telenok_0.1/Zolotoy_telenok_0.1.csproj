@@ -100,6 +100,7 @@
     </Compile>
     <Compile Include="Manager.cs" />
     <Compile Include="PartialClasses\Cars.cs" />
+    <Compile Include="PartialClasses\Client.cs" />
     <Compile Include="PartialClasses\Workers.cs" />
     <Compile Include="ServicesAddEditPage.xaml.cs">
       <DependentUpon>ServicesAddEditPage.xaml</DependentUpon>
