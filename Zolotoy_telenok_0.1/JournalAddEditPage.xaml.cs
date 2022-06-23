@@ -61,7 +61,7 @@ namespace Zolotoy_telenok_0._1
 
         private void SaveJournalBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show((DataPick.SelectedDate).ToString());
+            //MessageBox.Show((DataPick.SelectedDate).ToString());
             StringBuilder Errors = new StringBuilder();
             if ((CarsMarkCB.SelectedItem as Машина) == null)
                 Errors.AppendLine("Вы не выбрали машину");
@@ -74,20 +74,30 @@ namespace Zolotoy_telenok_0._1
                 MessageBox.Show(Errors.ToString());
                 return;
             }
+            
 
             
             
-                ZTDBEntities.GetContext().Запись.Add(new Запись()
+                ZTDBEntities.GetContext().Запись.Add
+                (new Запись()
                 {
                     Машина = CarsMarkCB.SelectedItem as Машина,
                     Работник = WorkerCB.SelectedItem as Работник,
                     Услуги = ServicesCB.SelectedItem as Услуги,
                     Сумма = GetSumma(CarsMarkCB.SelectedItem as Машина, ServicesCB.SelectedItem as Услуги),
-                    Дата = DataPick.SelectedDate.Value,
+                    Дата = DateTime.Now,
+                    //Дата = DataPick.SelectedDate.Value,
 
-                });
+                }
+                );;
             
             ZTDBEntities.GetContext().SaveChanges();
+            
+            if (Errors.Length == 0)
+            {
+                MessageBox.Show("Данные записаны");
+                Manager.MainFrame.GoBack();
+            }
 
         }
     }

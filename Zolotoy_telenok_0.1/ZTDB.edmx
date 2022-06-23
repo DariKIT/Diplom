@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ZTDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище ZTDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Запись">
           <Key>
             <PropertyRef Name="ИД_Записи" />
@@ -23,7 +23,7 @@
           <Property Name="ИД_Клиента" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Фамилия" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Имя" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ИдУслуги" Type="int" />
+          <Property Name="ИдУслуги" Type="int" Nullable="false" />
           <Property Name="Время" Type="datetime" Nullable="false" />
           <Property Name="Телефон" Type="nvarchar" MaxLength="12" Nullable="false" />
         </EntityType>
@@ -91,8 +91,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Клиент_Услуги">
-          <End Role="Услуги" Type="Self.Услуги" Multiplicity="0..1" />
+        <Association Name="FK_Клиент_Услуги1">
+          <End Role="Услуги" Type="Self.Услуги" Multiplicity="1" />
           <End Role="Клиент" Type="Self.Клиент" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Услуги">
@@ -103,7 +103,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ZTDBModelStoreContainer">
+        <EntityContainer Name="Хранилище ZTDBModelContainer">
           <EntitySet Name="Запись" EntityType="Self.Запись" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Клиент" EntityType="Self.Клиент" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Машина" EntityType="Self.Машина" Schema="dbo" store:Type="Tables" />
@@ -121,12 +121,13 @@
             <End Role="Услуги" EntitySet="Услуги" />
             <End Role="Запись" EntitySet="Запись" />
           </AssociationSet>
-          <AssociationSet Name="FK_Клиент_Услуги" Association="Self.FK_Клиент_Услуги">
+          <AssociationSet Name="FK_Клиент_Услуги1" Association="Self.FK_Клиент_Услуги1">
             <End Role="Услуги" EntitySet="Услуги" />
             <End Role="Клиент" EntitySet="Клиент" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ZTDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -138,23 +139,23 @@
           <Property Name="ИД_Машины" Type="Int32" Nullable="false" />
           <Property Name="ИД_Работнка" Type="Int32" Nullable="false" />
           <Property Name="ИД_Услуги" Type="Int32" Nullable="false" />
+          <Property Name="Дата" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Сумма" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <NavigationProperty Name="Машина" Relationship="Self.FK_Запись_Машина" FromRole="Запись" ToRole="Машина" />
           <NavigationProperty Name="Работник" Relationship="Self.FK_Запись_Работник" FromRole="Запись" ToRole="Работник" />
           <NavigationProperty Name="Услуги" Relationship="Self.FK_Запись_Услуги" FromRole="Запись" ToRole="Услуги" />
-          <Property Name="Сумма" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Дата" Type="DateTime" Precision="0" Nullable="false" />
         </EntityType>
         <EntityType Name="Клиент">
           <Key>
             <PropertyRef Name="ИД_Клиента" />
           </Key>
           <Property Name="ИД_Клиента" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Фамилия" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Имя" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ИдУслуги" Type="Int32" />
+          <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ИдУслуги" Type="Int32" Nullable="false" />
           <Property Name="Время" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Телефон" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Услуги" Relationship="ZTDBModel.FK_Клиент_Услуги" FromRole="Клиент" ToRole="Услуги" />
+          <Property Name="Телефон" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Услуги" Relationship="Self.FK_Клиент_Услуги1" FromRole="Клиент" ToRole="Услуги" />
         </EntityType>
         <EntityType Name="Машина">
           <Key>
@@ -184,9 +185,9 @@
           <Property Name="ИД_Услуги" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Наименование" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Описание" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Цена" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Цена" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <NavigationProperty Name="Запись" Relationship="Self.FK_Запись_Услуги" FromRole="Услуги" ToRole="Запись" />
-          <NavigationProperty Name="Клиент" Relationship="ZTDBModel.FK_Клиент_Услуги" FromRole="Услуги" ToRole="Клиент" />
+          <NavigationProperty Name="Клиент" Relationship="Self.FK_Клиент_Услуги1" FromRole="Услуги" ToRole="Клиент" />
         </EntityType>
         <Association Name="FK_Запись_Машина">
           <End Role="Машина" Type="Self.Машина" Multiplicity="1" />
@@ -224,6 +225,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Клиент_Услуги1">
+          <End Role="Услуги" Type="Self.Услуги" Multiplicity="1" />
+          <End Role="Клиент" Type="Self.Клиент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Услуги">
+              <PropertyRef Name="ИД_Услуги" />
+            </Principal>
+            <Dependent Role="Клиент">
+              <PropertyRef Name="ИдУслуги" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ZTDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Запись" EntityType="Self.Запись" />
           <EntitySet Name="Клиент" EntityType="Self.Клиент" />
@@ -242,86 +255,75 @@
             <End Role="Услуги" EntitySet="Услуги" />
             <End Role="Запись" EntitySet="Запись" />
           </AssociationSet>
-          <AssociationSet Name="FK_Клиент_Услуги" Association="ZTDBModel.FK_Клиент_Услуги">
+          <AssociationSet Name="FK_Клиент_Услуги1" Association="Self.FK_Клиент_Услуги1">
             <End Role="Услуги" EntitySet="Услуги" />
             <End Role="Клиент" EntitySet="Клиент" />
           </AssociationSet>
         </EntityContainer>
-        <Association Name="FK_Клиент_Услуги">
-          <End Type="ZTDBModel.Услуги" Role="Услуги" Multiplicity="0..1" />
-          <End Type="ZTDBModel.Клиент" Role="Клиент" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Услуги">
-              <PropertyRef Name="ИД_Услуги" />
-            </Principal>
-            <Dependent Role="Клиент">
-              <PropertyRef Name="ИдУслуги" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ZTDBModelStoreContainer" CdmEntityContainer="ZTDBEntities">
-    <EntitySetMapping Name="Запись">
-      <EntityTypeMapping TypeName="IsTypeOf(ZTDBModel.Запись)">
-        <MappingFragment StoreEntitySet="Запись">
-                <ScalarProperty Name="Дата" ColumnName="Дата" />
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ZTDBModelContainer" CdmEntityContainer="ZTDBEntities">
+          <EntitySetMapping Name="Запись">
+            <EntityTypeMapping TypeName="ZTDBModel.Запись">
+              <MappingFragment StoreEntitySet="Запись">
                 <ScalarProperty Name="ИД_Записи" ColumnName="ИД_Записи" />
-          <ScalarProperty Name="ИД_Машины" ColumnName="ИД_Машины" />
-          <ScalarProperty Name="ИД_Работнка" ColumnName="ИД_Работнка" />
-          <ScalarProperty Name="ИД_Услуги" ColumnName="ИД_Услуги" />
-          <ScalarProperty Name="Сумма" ColumnName="Сумма" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Клиент">
-      <EntityTypeMapping TypeName="IsTypeOf(ZTDBModel.Клиент)">
-        <MappingFragment StoreEntitySet="Клиент">
-          <ScalarProperty Name="Телефон" ColumnName="Телефон" />
-                <ScalarProperty Name="Время" ColumnName="Время" />
-                <ScalarProperty Name="ИдУслуги" ColumnName="ИдУслуги" />
-                <ScalarProperty Name="Имя" ColumnName="Имя" />
-                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="ИД_Машины" ColumnName="ИД_Машины" />
+                <ScalarProperty Name="ИД_Работнка" ColumnName="ИД_Работнка" />
+                <ScalarProperty Name="ИД_Услуги" ColumnName="ИД_Услуги" />
+                <ScalarProperty Name="Дата" ColumnName="Дата" />
+                <ScalarProperty Name="Сумма" ColumnName="Сумма" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Клиент">
+            <EntityTypeMapping TypeName="ZTDBModel.Клиент">
+              <MappingFragment StoreEntitySet="Клиент">
                 <ScalarProperty Name="ИД_Клиента" ColumnName="ИД_Клиента" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Машина">
-      <EntityTypeMapping TypeName="IsTypeOf(ZTDBModel.Машина)">
-        <MappingFragment StoreEntitySet="Машина">
-          <ScalarProperty Name="ИД_Машины" ColumnName="ИД_Машины" />
-          <ScalarProperty Name="Марка" ColumnName="Марка" />
-          <ScalarProperty Name="Модель" ColumnName="Модель" />
-          <ScalarProperty Name="Класс" ColumnName="Класс" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Работник">
-      <EntityTypeMapping TypeName="IsTypeOf(ZTDBModel.Работник)">
-        <MappingFragment StoreEntitySet="Работник">
-          <ScalarProperty Name="ИД_Работника" ColumnName="ИД_Работника" />
-          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
-          <ScalarProperty Name="Имя" ColumnName="Имя" />
-          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
-          <ScalarProperty Name="Телефон" ColumnName="Телефон" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Услуги">
-      <EntityTypeMapping TypeName="IsTypeOf(ZTDBModel.Услуги)">
-        <MappingFragment StoreEntitySet="Услуги">
-          <ScalarProperty Name="ИД_Услуги" ColumnName="ИД_Услуги" />
-          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
-          <ScalarProperty Name="Описание" ColumnName="Описание" />
-          <ScalarProperty Name="Цена" ColumnName="Цена" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-  </EntityContainerMapping>
-</Mapping></edmx:Mappings>
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="ИдУслуги" ColumnName="ИдУслуги" />
+                <ScalarProperty Name="Время" ColumnName="Время" />
+                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Машина">
+            <EntityTypeMapping TypeName="ZTDBModel.Машина">
+              <MappingFragment StoreEntitySet="Машина">
+                <ScalarProperty Name="ИД_Машины" ColumnName="ИД_Машины" />
+                <ScalarProperty Name="Марка" ColumnName="Марка" />
+                <ScalarProperty Name="Модель" ColumnName="Модель" />
+                <ScalarProperty Name="Класс" ColumnName="Класс" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Работник">
+            <EntityTypeMapping TypeName="ZTDBModel.Работник">
+              <MappingFragment StoreEntitySet="Работник">
+                <ScalarProperty Name="ИД_Работника" ColumnName="ИД_Работника" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Услуги">
+            <EntityTypeMapping TypeName="ZTDBModel.Услуги">
+              <MappingFragment StoreEntitySet="Услуги">
+                <ScalarProperty Name="ИД_Услуги" ColumnName="ИД_Услуги" />
+                <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+                <ScalarProperty Name="Описание" ColumnName="Описание" />
+                <ScalarProperty Name="Цена" ColumnName="Цена" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -335,7 +337,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
       </DesignerInfoPropertySet>
     </Options>

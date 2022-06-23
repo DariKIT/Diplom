@@ -18,8 +18,8 @@ namespace Zolotoy_telenok_0._1
         public int ИД_Машины { get; set; }
         public int ИД_Работнка { get; set; }
         public int ИД_Услуги { get; set; }
-        public decimal Сумма { get; set; }
         public System.DateTime Дата { get; set; }
+        public decimal Сумма { get; set; }
     
         public virtual Машина Машина { get; set; }
         public virtual Работник Работник { get; set; }
