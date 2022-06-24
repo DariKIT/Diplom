@@ -107,6 +107,8 @@
                                             <RowDefinition Height="*"></RowDefinition>
                                             <RowDefinition Height="*"></RowDefinition>
                                             <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -118,11 +120,14 @@
                                         <TextBlock Grid.Row="0" Grid.Column="0" Text="Клиент:" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
                                         <TextBlock Grid.Row="1" Grid.Column="0" Text="Время:" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
                                         <TextBlock Grid.Row="2" Grid.Column="0" Text="Телефон:" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
-                                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Услуга:" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Машина:" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="4" Grid.Column="0" Text="Услуга:" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
                                         <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Clients}"  Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
                                         <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Время, StringFormat=dd.MM.yyyy/hh:mm}"  Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
                                         <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Телефон}"  Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
-                                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Услуги.Наименование}"  Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Машина.Cars}"  Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Услуги.Наименование}"  Margin="15 0 0 0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                                        
 
                                     </Grid>
                                 </DataTemplate>

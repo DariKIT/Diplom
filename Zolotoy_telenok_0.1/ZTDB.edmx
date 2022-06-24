@@ -21,11 +21,12 @@
             <PropertyRef Name="ИД_Клиента" />
           </Key>
           <Property Name="ИД_Клиента" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Фамилия" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Имя" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ИдУслуги" Type="int" Nullable="false" />
-          <Property Name="Время" Type="datetime" Nullable="false" />
-          <Property Name="Телефон" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="50" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="50" />
+          <Property Name="ИдУслуги" Type="int" />
+          <Property Name="Время" Type="datetime" />
+          <Property Name="Телефон" Type="nvarchar" MaxLength="12" />
+          <Property Name="ИдМашины" Type="int" />
         </EntityType>
         <EntityType Name="Машина">
           <Key>
@@ -91,8 +92,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Клиент_Машина">
+          <End Role="Машина" Type="Self.Машина" Multiplicity="0..1" />
+          <End Role="Клиент" Type="Self.Клиент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Машина">
+              <PropertyRef Name="ИД_Машины" />
+            </Principal>
+            <Dependent Role="Клиент">
+              <PropertyRef Name="ИдМашины" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Клиент_Услуги1">
-          <End Role="Услуги" Type="Self.Услуги" Multiplicity="1" />
+          <End Role="Услуги" Type="Self.Услуги" Multiplicity="0..1" />
           <End Role="Клиент" Type="Self.Клиент" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Услуги">
@@ -120,6 +133,10 @@
           <AssociationSet Name="FK_Запись_Услуги" Association="Self.FK_Запись_Услуги">
             <End Role="Услуги" EntitySet="Услуги" />
             <End Role="Запись" EntitySet="Запись" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Клиент_Машина" Association="Self.FK_Клиент_Машина">
+            <End Role="Машина" EntitySet="Машина" />
+            <End Role="Клиент" EntitySet="Клиент" />
           </AssociationSet>
           <AssociationSet Name="FK_Клиент_Услуги1" Association="Self.FK_Клиент_Услуги1">
             <End Role="Услуги" EntitySet="Услуги" />
@@ -150,11 +167,13 @@
             <PropertyRef Name="ИД_Клиента" />
           </Key>
           <Property Name="ИД_Клиента" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ИдУслуги" Type="Int32" Nullable="false" />
-          <Property Name="Время" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Телефон" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ИдУслуги" Type="Int32" />
+          <Property Name="Время" Type="DateTime" Precision="3" />
+          <Property Name="Телефон" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="ИдМашины" Type="Int32" />
+          <NavigationProperty Name="Машина" Relationship="Self.FK_Клиент_Машина" FromRole="Клиент" ToRole="Машина" />
           <NavigationProperty Name="Услуги" Relationship="Self.FK_Клиент_Услуги1" FromRole="Клиент" ToRole="Услуги" />
         </EntityType>
         <EntityType Name="Машина">
@@ -166,6 +185,7 @@
           <Property Name="Модель" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Класс" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Запись" Relationship="Self.FK_Запись_Машина" FromRole="Машина" ToRole="Запись" />
+          <NavigationProperty Name="Клиент" Relationship="Self.FK_Клиент_Машина" FromRole="Машина" ToRole="Клиент" />
         </EntityType>
         <EntityType Name="Работник">
           <Key>
@@ -225,8 +245,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Клиент_Машина">
+          <End Role="Машина" Type="Self.Машина" Multiplicity="0..1" />
+          <End Role="Клиент" Type="Self.Клиент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Машина">
+              <PropertyRef Name="ИД_Машины" />
+            </Principal>
+            <Dependent Role="Клиент">
+              <PropertyRef Name="ИдМашины" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Клиент_Услуги1">
-          <End Role="Услуги" Type="Self.Услуги" Multiplicity="1" />
+          <End Role="Услуги" Type="Self.Услуги" Multiplicity="0..1" />
           <End Role="Клиент" Type="Self.Клиент" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Услуги">
@@ -254,6 +286,10 @@
           <AssociationSet Name="FK_Запись_Услуги" Association="Self.FK_Запись_Услуги">
             <End Role="Услуги" EntitySet="Услуги" />
             <End Role="Запись" EntitySet="Запись" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Клиент_Машина" Association="Self.FK_Клиент_Машина">
+            <End Role="Машина" EntitySet="Машина" />
+            <End Role="Клиент" EntitySet="Клиент" />
           </AssociationSet>
           <AssociationSet Name="FK_Клиент_Услуги1" Association="Self.FK_Клиент_Услуги1">
             <End Role="Услуги" EntitySet="Услуги" />
@@ -287,6 +323,7 @@
                 <ScalarProperty Name="ИдУслуги" ColumnName="ИдУслуги" />
                 <ScalarProperty Name="Время" ColumnName="Время" />
                 <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+                <ScalarProperty Name="ИдМашины" ColumnName="ИдМашины" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

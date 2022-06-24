@@ -17,10 +17,12 @@ namespace Zolotoy_telenok_0._1
         public int ИД_Клиента { get; set; }
         public string Фамилия { get; set; }
         public string Имя { get; set; }
-        public int ИдУслуги { get; set; }
-        public System.DateTime Время { get; set; }
+        public Nullable<int> ИдУслуги { get; set; }
+        public Nullable<System.DateTime> Время { get; set; }
         public string Телефон { get; set; }
+        public Nullable<int> ИдМашины { get; set; }
     
+        public virtual Машина Машина { get; set; }
         public virtual Услуги Услуги { get; set; }
     }
 }

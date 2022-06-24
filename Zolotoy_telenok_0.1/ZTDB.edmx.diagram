@@ -4,15 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="805fb5e8f97e4c88b5eea84e87508318" Name="Diagram1">
+      <Diagram DiagramId="2ff58fb664b74bd8997b3b8abdd9fdb0" Name="Diagram1">
         <EntityTypeShape EntityType="ZTDBModel.Запись" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZTDBModel.Клиент" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZTDBModel.Машина" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZTDBModel.Работник" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZTDBModel.Услуги" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZTDBModel.Клиент" Width="1.5" PointX="6" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZTDBModel.Машина" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZTDBModel.Работник" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZTDBModel.Услуги" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
         <AssociationConnector Association="ZTDBModel.FK_Запись_Машина" ManuallyRouted="false" />
         <AssociationConnector Association="ZTDBModel.FK_Запись_Работник" ManuallyRouted="false" />
         <AssociationConnector Association="ZTDBModel.FK_Запись_Услуги" ManuallyRouted="false" />
+        <AssociationConnector Association="ZTDBModel.FK_Клиент_Машина" ManuallyRouted="false" />
         <AssociationConnector Association="ZTDBModel.FK_Клиент_Услуги1" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
